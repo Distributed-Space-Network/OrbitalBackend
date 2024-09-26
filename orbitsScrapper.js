@@ -5,7 +5,7 @@ const fs = require('fs');
 const ERR_LOG_FILE = 'error.log';
 const db_updates = {};
 
-const fetchAndParseCelestrakTLEs = async() => {
+const fetchAndParseCelesTrackTLEs = async() => {
     try {
         if (db_updates['celestrak'] && (Math.floor(new Date().now() / 1000) - db_updates['celestrak']) < 3600) {
             return console.log('Celestrak TLEs already updated within the last hour');
@@ -184,7 +184,7 @@ const main = async() => {
         // Repeat once per day
         try { await fetchNORADTLEs(); } catch (error) { console.error('Error:', error); }
         // Repeat once per hour
-        try { await fetchAndParseCelestrakTLEs(); } catch (error) { console.error('Error:', error); }
+        try { await fetchAndParseCelesTrackTLEs(); } catch (error) { console.error('Error:', error); }
         // Repeat one per hour
         try { await fetchAndParseSatNOGSTLEs(); } catch (error) { console.error('Error:', error); }
         // TODO - Parse in Cassandra DB
