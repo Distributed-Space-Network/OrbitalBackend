@@ -54,7 +54,7 @@ const estimOrbitByTLEs = async(tleFile, outputOrbitsFile = 'estim_orbits.json') 
 
     // Save parsed data to JSON file
     fs.writeFileSync(outputOrbitsFile, JSON.stringify(satellites, null, 2));
-    console.log('Parsed NORAD TLEs saved to norad_tles.json');
+    console.log('Updated propagated orbits saved to:', outputOrbitsFile);
   } catch (error) {
     console.error('Error fetching or parsing NORAD TLEs:', error);
   }
